@@ -1,5 +1,4 @@
-metalsmith-sass
-===============
+# metalsmith-sass
 
 [![Build Status](https://app.travis-ci.com/stevenschobert/metalsmith-sass.svg?branch=master)](https://app.travis-ci.com/stevenschobert/metalsmith-sass)
 
@@ -41,9 +40,11 @@ If you are using the JS Api for Metalsmith, then you can require the module and 
 ```js
 var sass = require("metalsmith-sass");
 
-metalsmith.use(sass({
-  outputStyle: "expanded"
-}));
+metalsmith.use(
+  sass({
+    outputStyle: "expanded",
+  })
+);
 ```
 
 ## Options
@@ -64,9 +65,11 @@ the following setup output styles to `build/css/` even though the source files a
 Metalsmith()
   .source("src/")
   .destination("build/")
-  .use(sass({
-    outputDir: "css/"   // This changes the output dir to "build/css/" instead of "build/scss/"
-  }))
+  .use(
+    sass({
+      outputDir: "css/", // This changes the output dir to "build/css/" instead of "build/scss/"
+    })
+  )
   .build(function () {
     done();
   });
@@ -80,12 +83,14 @@ This is useful if you want to preserve your folder structure, but change just on
 Metalsmith(__dirname)
   .source("src/")
   .destination("build/")
-  .use(sass({
-    outputDir: function(originalPath) {
-      // this will change scss/some/path to css/some/path
-      return originalPath.replace("scss", "css");
-    }
-  }))
+  .use(
+    sass({
+      outputDir: function (originalPath) {
+        // this will change scss/some/path to css/some/path
+        return originalPath.replace("scss", "css");
+      },
+    })
+  )
   .build(function () {
     done();
   });
@@ -99,10 +104,12 @@ The easiest way to enable source maps in your metalsmith project is to add the f
 Metalsmith(__dirname)
   .source("src/")
   .destination("build/")
-  .use(sass({
-    sourceMap: true,
-    sourceMapContents: true   // This will embed all the Sass contents in your source maps.
-  }))
+  .use(
+    sass({
+      sourceMap: true,
+      sourceMapContents: true, // This will embed all the Sass contents in your source maps.
+    })
+  )
   .build(function () {
     done();
   });
